@@ -7,3 +7,4 @@ device = "cpu"
 model = load(model_name, map_location=device)
 
 print(model)
+
