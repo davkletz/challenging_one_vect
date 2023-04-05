@@ -1,7 +1,7 @@
 import torch.nn as nn
 import torch
 
-cos = nn.CosineSimilarity()
+cos = nn.CosineSimilarity(dim = 0)
 
 
 
