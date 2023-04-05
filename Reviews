@@ -1,0 +1,87 @@
+
+Review #1
+What is this paper about and what contributions does it make?
+This article propose an interesting study about one particular solution to associate every word to several vectors, exploiting RNN on a particular task, dependency parsing. Results are presented on 2 datasets and demonstrate the interest of the approach.
+Reasons to accept
+The experiments are well conducted. Only one task is considered and three levels of embeddings decomposition but this simple setup allows a good understanding of the outputs.
+Reasons to reject
+The authors have chosen to limit themselves to RNN architectures to demonstrate the interest of their approach... While they underline in the introduction that multiple transformers heads represent an alternative to their approach.
+The main flaw of this article is for me not to have considered several interesting existing approaches. This lack is for me redhibitory for the publication of this article at ACL.
+
+Questions for the Author(s)
+It's not clear to me how RNNs work on multiple embeddings: do RNNs cross-reference the weights of different representations or are they learned in parallel. In the latter case, isn't it just bagging? [section 4.1, 4.2]
+Missing References
+I think the main concern with this article is the lack of reference (and baselines) regarding several fields in which embeddings are not single.
+=> Distributional/Gaussian Embedding     Learning to represent knowledge graphs with gaussian embedding     S He, 2015
+
+=> VAE, the big wave          Auto-encoding variational bayes     DP Kingma, 2014
+
+=> Quantic embedding
+
+    What can quantum theory bring to information retrieval     B Piwowarski, I Frommholz, M Lalmas, K Van Rijsbergen, 2010
+
+    Quantum embedding of knowledge for reasoning     D Garg, 2019
+
+=> Subspace learning
+
+    https://machinelearning.apple.com/research/improving-neural-subspaces
+
+Soundness:	2
+Excitement (Long paper):	3
+Reviewer Confidence:	4
+Recommendation for Best Paper Award:	No
+Reproducibility:	4
+Ethical Concerns:	No
+
+Review #2
+What is this paper about and what contributions does it make?
+This paper challenges the assumption that each token should be represented by only one vector, something very common in current NLP models. It explores strategies and benefits of splitting token vectors into multiple representations, and shows that doing so improves results in RNN models in a dependency parsing task.
+Reasons to accept
+Paper is easy to follow, and does a good job explaining its motivations, and the conclusions those motivations lead to. It was good at addressing concerns that arise as a consequence of the changes made in the paper (for example, in order to avoid benefiting from more parameters, adjusts the size the vectors accordingly). Also, it picks an assumption very common in NLP models, suggesting that its approaches could potentially be applied to many different problems.
+Reasons to reject
+One major weakness of this paper is its focus on using the multiple vectors on RNN based models only, without any experiments on transformer encoder models. The motivation for using multiple word vectors is to allow the downstream model to focus on the inputted word more than once, and secondly to have different aspects of a word captured. Multi-headed Attention in Transformers address both of these issues already (the inputted word is used in attention calculations of each other representation, and the multiple attention heads capture different aspects of an inputted vector (this is acknowledged by the authors in Section 2). Even in RNNs, using an attention mechanism allows for some recalculations of word representations. As such, the paper needs to motivate why this approach contributes more than multi-headed attention and transformer encoders, and show that it improves results in transformer architectures in addition to RNNs. Secondly, the paper needs more support for the "second chance RNN" argument, where sequential models benefit from viewing the same word multiple times. This is a large motivation in the paper, and it seems unclear whether this is an actual reason for the improved results, as opposed to other reasons like disentangling multiple representations from the same word. This could be achieved by using the same repeated vector instead of different ones, something the paper considers but doesn't do. This should be included and compared to the different set of vectors. Finally, while results of the approach are good, the stronger results (with the learned embeddings in Table 1, as opposed to the pretrained ones in Table 2) are fairly close to k=1. Significance testing should be used to show the difference in results.
+Soundness:	2
+Excitement (Long paper):	2
+Reviewer Confidence:	4
+Recommendation for Best Paper Award:	No
+Reproducibility:	5
+Ethical Concerns:	No
+
+Review #3
+What is this paper about and what contributions does it make?
+The paper questions and critiques one general widely used notion of current language models / encoders: That each input token of a sequence gets represented with exactly one vector. (This is not to be confused with the subtoken nature of transformer tokenizers. They still represent each subtoken only with one vector.) The authors, instead, propose to use "stratified" vector representations, meaning dividing up token to be represented not by one vector but by a group of k (1,2,4 or 8) vectors. In sequential models (RNNs) these vectors appear next to each other.
+The authors argue that it might be "to much to ask" especially of RNNs to immediately get the best representation of a token in a sequence, having it seen only once before already moving to the next token. Furthermore, tokens can have different aspects or can play different roles, which might be represented better via several separate vectors per token.
+
+To investigate their assumption and put it to the test, the authors choose dependency parsing as the task, using a biaffine bidirectionsl RNN dependency parser. They use an English (EWT) and French (GSD) dataset. They run several experiments, keeping the base model architecture (in particularly the number of parameters) as constant as possible, but change the input representations: In addition to the traditional way (1 vector per token) they split the token representation into k (1/k sized) vectors, each one of them being placed next to each other in the original sequence.
+
+The experiments are done in two settings: a) training token representations from scratch, using the dependency parsing loss, and b) using a frozen transformer model (Flaubert) as feature extractor.
+
+The results indeed point into the direction that using the stratified vectors does have a positive effect on the task of dependency parsing. However, the difference in the chosen metric(s) (UAS and LAS) is not that huge and more apparent on the French data. Interestingly, it is even more apparent in the second setting (frozen Transformer embeddings). They also do a short prompting of the created representations in hopes to get more structural insight, however, without very fruitful results.
+
+The authors conclude by giving a very honest and well-formulated insight into limitations of their work, open questions and consequential future work that is needed to investigate the matter and nature of the representation form.
+
+Reasons to accept
+The paper raises an interesting thought and question about the way token representations are used in most of the current NLP models. The traditional notion of having one vector per word/token is so general and widely used, that it is easily overlooked and seldom challenged or questioned. In this sense, I think the paper constitutes an interesting, creative, and novel point of view that is interesting for nearly every NLP researcher. Questioning the community's popular assumptions and methods is always beneficial - for the community as well as for one's own work. The positive experimental results underline that it is worth thinking and investigating more about their novel way of using stratified/multiple vector representations per token. The method is well thought through, the authors consider possible deluding factors like parameter size, effect on long-distance relations, comparability, etc. Furthermore, the discussion (or rather the section "future work") is very interesting and genuine, which I think is to be highlighted positively.
+Reasons to reject
+Though the general idea of the paper is really good and I read it with great interest, I do think there are some weaknesses to the paper. (However, the authors do point most of them out themselves!) I would still like to see it accepted but maybe here are some things to consider before publication:
+The related work section is kept rather short. I would have liked to get more insight into research about representation learning and embedding spaces.
+The task of dependency parsing is certainly interesting in its own right (and I understand the argumentation, that a word plays different roles in different syntactic structures and is therefore suited for the multi-vector view), but I think the paper would benefit if they would try reproducing their results on one/two additional tasks, like sequence classification (e. g. sentiment) or sequence labeling (NER).
+Maybe they could add a third setting, where the Transformer is not frozen and only used as feature extractor but is instead further fine-tuned? Maybe there are difficulties to transfer the approach directly given the need to change the vector and sequence length and therefore internal representations but I could not help wondering why it was not done.
+As the authors already state, it would be great to get more insight into the structure/interpretability/semantics of the learned representations. But I understand, that this might go beyond what can possibly be done in one paper.
+Questions for the Author(s)
+Question A: As already mentioned above: Is there a specific reason not to fine-tune the transformer model?
+Question B: Have you looked into transferring the idea to any other (simple) task?
+
+Question C:
+
+Missing References
+I don't have specific hints unfortunately, but I would love to see more related work included in general, especially concerning representation learning.
+Typos, Grammar, Style, and Presentation Improvements
+Maybe shortly explain UAS and LAS to users not too familiar with them.
+Soundness:	3
+Excitement (Long paper):	3.5
+Reviewer Confidence:	4
+Recommendation for Best Paper Award:	No
+Reproducibility:	4
+Ethical Concerns:	No
+
