@@ -20,7 +20,7 @@ def most_similar( vect_to_compare, list_vectors, n_k):
 
 
 
-model_name = "res_k_4_seed_0_fr_gsd_uas"
+model_name = "/data/mdehouck/thick_vectors/models/res_k_4_seed_0_fr_gsd_uas"
 device = "cpu"
 model = torch.load(model_name, map_location=device)
 
