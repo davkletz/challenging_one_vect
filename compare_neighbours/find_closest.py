@@ -42,9 +42,9 @@ def get_list_vectors(list_vectors, k):
     size_real_vectors = size_vectors // k
 
     for i in range(k):
-        results.append(list_vectors[:, i*size_real_vectors:(i+1)*size_real_vectors])
+        results.append(list_vectors[:, i*size_real_vectors:(i+1)*size_real_vectors].cpu().numpy())
 
-    return results
+    return results.reverse()
 
 
 
