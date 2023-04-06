@@ -23,7 +23,7 @@ def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
 
         for element in list_vectors:
             current_cos = cos(current_vect_to_compare, element)
-            np.flip(current_cos, 0)
+
             list_similarities.append(current_cos)
 
         #print(list_similarities)
@@ -32,7 +32,11 @@ def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
 
         sorted, indices = torch.sort(list_similarities)
 
-        closests.append(indices[-n_k:].cpu().numpy())
+        indices = indices[-n_k:].cpu().numpy()
+
+        np.flip(indices)
+
+        closests.append(indices)
 
 
 
