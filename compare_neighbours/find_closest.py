@@ -18,8 +18,7 @@ def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
         current_vect_to_compare = vect_to_compare
 
         list_similarities = []
-        print(current_vect_to_compare.shape)
-        print(list_vectors[0].shape)
+
 
         for element in list_vectors:
             list_similarities.append(cos(current_vect_to_compare, element))
@@ -32,8 +31,10 @@ def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
 
         closests.append(indices[-n_k:].cpu().numpy())
 
-    closests = closests.reverse()
 
+    print(closests)
+    closests.reverse()
+    print(closests)
 
     return closests
 
