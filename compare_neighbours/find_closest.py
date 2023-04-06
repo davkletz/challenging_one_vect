@@ -24,7 +24,7 @@ def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
         for element in list_vectors:
             list_similarities.append(cos(current_vect_to_compare, element))
 
-        print(list_similarities)
+        #print(list_similarities)
 
         list_similarities = torch.tensor(list_similarities)
 
