@@ -17,6 +17,8 @@ def most_similars( vect_to_compare, all_list_vectors, n_k):
         current_vect_to_compare = vect_to_compare[k*size_vector:(k+1)*size_vector]
 
         list_similarities = []
+        print(current_vect_to_compare.shape)
+        print(list_vectors[0].shape)
 
         for element in list_vectors:
             list_similarities.append(cos(current_vect_to_compare, element))
