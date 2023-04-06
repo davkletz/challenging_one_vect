@@ -1,7 +1,7 @@
 import torch.nn as nn
 import torch
 import numpy as np
-
+from random import shuffle
 cos = nn.CosineSimilarity(dim = 0)
 
 
@@ -69,19 +69,36 @@ list_vectors = get_list_vectors(list_vectors, k)
 
 r = most_similars(0, list_vectors, 25)
 
-print(r)
-
-dico_f = {}
-
-for results in r:
-    for i, element in enumerate(results):
-        if element in dico_f:
-            dico_f[element].append(i)
-        else:
-            dico_f[element] = [i]
+#print(r)
 
 
-print(dico_f)
+
+
+list_idx = list(range(list_vectors[0]))
+
+shuffle(list_idx)
+
+
+for l in list_idx:
+
+    print(f"\n\n#####\n\n{l}\n\n")
+    r = most_similars(l, list_vectors, 25)
+
+    dico_f = {}
+
+    for results in r:
+        for i, element in enumerate(results):
+            if element in dico_f:
+                dico_f[element].append(i)
+            else:
+                dico_f[element] = [i]
+
+    for j in results:
+        if len(results[j]) > 1:
+            print(f"{j} : {results[j]}")
+
+
+
 
 
 #for l in range(len(list_vectors)):
