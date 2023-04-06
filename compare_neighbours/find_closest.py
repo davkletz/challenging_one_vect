@@ -30,7 +30,10 @@ def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
 
         sorted, indices = torch.sort(list_similarities)
 
-        closests.append(indices[-n_k:])
+        closests.append(indices[-n_k:].cpu().numpy())
+
+    closests.reverse()
+
 
     return closests
 
@@ -42,9 +45,9 @@ def get_list_vectors(list_vectors, k):
     size_real_vectors = size_vectors // k
 
     for i in range(k):
-        results.append(list_vectors[:, i*size_real_vectors:(i+1)*size_real_vectors].cpu().numpy())
+        results.append(list_vectors[:, i*size_real_vectors:(i+1)*size_real_vectors])
 
-    return results.reverse()
+    return results
 
 
 
@@ -58,7 +61,7 @@ list_vectors = model["W.weight"]
 
 list_vectors = get_list_vectors(list_vectors, k)
 
-r = most_similars(0, list_vectors, 10)
+r = most_similars(0, list_vectors, 25)
 
 print(r)
 
