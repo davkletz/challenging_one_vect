@@ -95,7 +95,7 @@ for l in list_idx:
 
     for j in dico_f:
         if len(dico_f[j]) > 1:
-            print(f"{j} : {results[j]}")
+            print(f"{j} : {dico_f[j]}")
 
 
 
