@@ -93,8 +93,8 @@ for l in list_idx:
             else:
                 dico_f[element] = [i]
 
-    for j in results:
-        if len(results[j]) > 1:
+    for j in dico_f:
+        if len(dico_f[j]) > 1:
             print(f"{j} : {results[j]}")
 
 
