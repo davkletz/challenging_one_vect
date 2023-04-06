@@ -34,7 +34,7 @@ def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
 
         indices = indices[-n_k:].cpu().numpy()
 
-        np.flip(indices)
+        indices = np.flip(indices)
 
         closests.append(indices)
 
@@ -70,6 +70,19 @@ list_vectors = get_list_vectors(list_vectors, k)
 r = most_similars(0, list_vectors, 25)
 
 print(r)
+
+dico_f = {}
+
+for results in r:
+    for i, element in enumerate(results):
+        if element in dico_f:
+            dico_f[element].append(i)
+        else:
+            dico_f[element] = [i]
+
+
+print(dico_f)
+
 
 #for l in range(len(list_vectors)):
 
