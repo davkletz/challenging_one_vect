@@ -32,7 +32,7 @@ def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
 
         closests.append(indices[-n_k:].cpu().numpy())
 
-    closests.reverse()
+    closests = closests.reverse()
 
 
     return closests
