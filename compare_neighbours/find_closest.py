@@ -5,18 +5,24 @@ cos = nn.CosineSimilarity(dim = 0)
 
 
 
-def most_similar( vect_to_compare, list_vectors, n_k):
+def most_similars( vect_to_compare, all_list_vectors, n_k):
 
-    list_similarities = []
+    closests = []
 
-    for element in list_vectors:
-        list_similarities.append(cos(vect_to_compare, element))
+    for list_vectors in all_list_vectors:
 
-    list_similarities = torch.tensor(list_similarities)
+        list_similarities = []
 
-    sorted, indices = torch.sort(list_similarities)
+        for element in list_vectors:
+            list_similarities.append(cos(vect_to_compare, element))
 
-    return indices[-n_k:]
+        list_similarities = torch.tensor(list_similarities)
+
+        sorted, indices = torch.sort(list_similarities)
+
+        closests.append(indices[-n_k:])
+
+    return closests
 
 
 def get_list_vectors(list_vectors, k):
@@ -40,6 +46,6 @@ model = torch.load(model_name, map_location=device)
 
 list_vectors = model["W.weight"]
 
-list_vectors = get_list_vectors(list_vectors)
+list_vectors = get_list_vectors(list_vectors, k)
 
 most_similar(list_vectors[0], list_vectors, 10)
