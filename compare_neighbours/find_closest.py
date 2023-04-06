@@ -48,4 +48,4 @@ list_vectors = model["W.weight"]
 
 list_vectors = get_list_vectors(list_vectors, k)
 
-most_similar(list_vectors[0], list_vectors, 10)
+most_similars(list_vectors[0], list_vectors, 10)
