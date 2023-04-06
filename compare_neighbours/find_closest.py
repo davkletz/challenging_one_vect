@@ -19,12 +19,27 @@ def most_similar( vect_to_compare, list_vectors, n_k):
     return indices[-n_k:]
 
 
+def get_list_vectors(list_vectors, k):
 
-model_name = "/data/mdehouck/thick_vectors/models/res_k_4_seed_0_fr_gsd_uas"
+    results = []
+    size_vectors = list_vectors.shape[-1]
+    size_real_vectors = size_vectors // k
+
+    for i in range(k):
+        results.append(list_vectors[:, i*size_real_vectors:(i+1)*size_real_vectors])
+
+    return results
+
+
+
+k = 4
+model_name = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_0_fr_gsd_uas"
 device = "cpu"
 model = torch.load(model_name, map_location=device)
 
 
 list_vectors = model["W.weight"]
+
+list_vectors = get_list_vectors(list_vectors)
 
 most_similar(list_vectors[0], list_vectors, 10)
