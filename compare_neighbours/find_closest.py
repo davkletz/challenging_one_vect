@@ -5,16 +5,17 @@ cos = nn.CosineSimilarity(dim = 0)
 
 
 
-def most_similars( vect_to_compare, all_list_vectors, n_k):
+def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
 
     closests = []
 
-    size_vector = vect_to_compare.shape[-1]
 
     k = 0
 
     for list_vectors in all_list_vectors:
-        current_vect_to_compare = vect_to_compare[k*size_vector:(k+1)*size_vector]
+        vect_to_compare = list_vectors[idx_vect_to_compare]
+        #size_vector = vect_to_compare.shape[-1]
+        current_vect_to_compare = vect_to_compare
 
         list_similarities = []
         print(current_vect_to_compare.shape)
@@ -57,7 +58,7 @@ list_vectors = model["W.weight"]
 
 list_vectors = get_list_vectors(list_vectors, k)
 
-r = most_similars(list_vectors[0], list_vectors, 10)
+r = most_similars(0, list_vectors, 10)
 
 print(r)
 
