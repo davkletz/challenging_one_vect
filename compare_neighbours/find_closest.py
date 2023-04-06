@@ -74,7 +74,7 @@ r = most_similars(0, list_vectors, 25)
 
 
 
-list_idx = list(range(list_vectors[0]))
+list_idx = list(range(len(list_vectors[0])))
 
 shuffle(list_idx)
 
