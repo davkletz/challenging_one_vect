@@ -60,6 +60,9 @@ def get_list_vectors(list_vectors, k):
 
 
 k = 4
+
+lng = "fr"
+seed = "0"
 model_name = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_0_fr_gsd_uas"
 device = "cpu"
 model = torch.load(model_name, map_location=device)
