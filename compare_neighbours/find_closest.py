@@ -78,7 +78,19 @@ r = most_similars(0, list_vectors, 25)
 
 
 id_to_word = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/res_k_{k}_seed_{seed}_{lng}_gsd_id_to_word.joblib")
+word_to_id = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/res_k_{k}_seed_{seed}_{lng}_gsd_word_to_id.joblib")
 
+gr = word_to_id["grand"]
+
+r = most_similars(gr, list_vectors, 25)
+
+for results in r:
+    print(f'\n\n###')
+    for i, element in enumerate(results):
+        if element in id_to_word:
+            print(id_to_word[element])
+        else:
+            print(f"not in dico : {element}")
 
 list_idx = list(range(len(list_vectors[0])))
 
@@ -88,6 +100,7 @@ list_idx = list_idx[:15]
 
 
 
+"""
 for l in list_idx:
 
     print(f"\n\n#####\n\n{id_to_word[l]}\n\n")
@@ -119,3 +132,4 @@ for l in list_idx:
 
 #for l in range(len(list_vectors)):
 
+"""
