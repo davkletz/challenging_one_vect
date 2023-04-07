@@ -2,6 +2,8 @@ import torch.nn as nn
 import torch
 import numpy as np
 from random import shuffle
+from joblib import load
+
 cos = nn.CosineSimilarity(dim = 0)
 
 
@@ -72,22 +74,30 @@ r = most_similars(0, list_vectors, 25)
 #print(r)
 
 
+id_to_word = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/res_k_{k}_seed_{seed}_{lng}_gsd_id_to_word.joblib")
 
 
 list_idx = list(range(len(list_vectors[0])))
 
 shuffle(list_idx)
 
+list_idx = list_idx[:15]
+
+
 
 for l in list_idx:
 
-    print(f"\n\n#####\n\n{l}\n\n")
+    print(f"\n\n#####\n\n{id_to_word[l]}\n\n")
     r = most_similars(l, list_vectors, 25)
+
+
 
     dico_f = {}
 
     for results in r:
+        print(f'\n\n###')
         for i, element in enumerate(results):
+            print(id_to_word[element])
             if element in dico_f:
                 dico_f[element].append(i)
             else:
