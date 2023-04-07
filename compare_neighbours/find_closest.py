@@ -100,7 +100,10 @@ for l in list_idx:
     for results in r:
         print(f'\n\n###')
         for i, element in enumerate(results):
-            print(id_to_word[element])
+            if element in id_to_word:
+                print(id_to_word[element])
+            else:
+                print(f"not in dico : {element}")
             if element in dico_f:
                 dico_f[element].append(i)
             else:
