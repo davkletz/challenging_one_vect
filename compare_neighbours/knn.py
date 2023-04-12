@@ -91,13 +91,13 @@ gr = word_to_id[word]
 
 r, d = most_similars(gr, list_vectors, 25)
 
-for i, results in enumerate(r):
+for j, results in enumerate(r):
     print(f'\n\n###')
     for i, element in enumerate(results):
         if element in id_to_word:
-            print(f"{id_to_word[element]} : {d[i]}" )
+            print(f"{id_to_word[element]} : {d[j][i]}" )
         else:
-            print(f"not in dico : {element} : {d[i]}")
+            print(f"not in dico : {element} : {d[j][i]}")
 
 list_idx = list(range(len(list_vectors[0])))
 
