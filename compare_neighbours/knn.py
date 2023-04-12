@@ -4,7 +4,8 @@ from random import shuffle
 from joblib import load
 import sys
 from sklearn.neighbors import NearestNeighbors
-
+from nltk.corpus import stopwords
+french_stopwords = set(stopwords.words('french'))
 
 
 
@@ -97,7 +98,8 @@ for j, results in enumerate(r):
     print(f'\n\n###')
     for i, element in enumerate(results):
         if element in id_to_word:
-            print(f"{id_to_word[element]} : {d[j][i]}" )
+            if id_to_word[element] not in french_stopwords:
+                print(f"{id_to_word[element]} : {d[j][i]}" )
         else:
             print(f"not in dico : {element} : {d[j][i]}")
 
