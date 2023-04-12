@@ -61,6 +61,8 @@ def get_list_vectors(list_vectors, k):
 
 k = int(sys.argv[1])
 
+word = sys.argv[2]
+
 lng = "fr"
 seed = "0"
 model_name = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_0_fr_gsd_uas"
@@ -80,7 +82,7 @@ r = most_similars(0, list_vectors, 25)
 id_to_word = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_id_to_word.joblib")
 word_to_id = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_word_to_id.joblib")
 
-gr = word_to_id["grand"]
+gr = word_to_id[word]
 
 r = most_similars(gr, list_vectors, 25)
 
