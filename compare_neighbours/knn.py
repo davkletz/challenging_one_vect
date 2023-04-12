@@ -29,7 +29,7 @@ def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
         for element in list_vectors:
             current_dist = eucl_distance(current_vect_to_compare, element)
 
-            list_similarities.append(current_distcurrent_dist)
+            list_similarities.append(current_dist)
 
         #print(list_similarities)
 
