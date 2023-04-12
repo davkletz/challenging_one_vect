@@ -27,15 +27,16 @@ def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
 
 
         for element in list_vectors:
-            current_cos = eucl_distance(current_vect_to_compare, element)
+            current_dist = eucl_distance(current_vect_to_compare, element)
 
-            list_similarities.append(current_cos)
+            list_similarities.append(current_distcurrent_dist)
 
         #print(list_similarities)
 
         list_similarities = torch.tensor(list_similarities)
 
         sorted, indices = torch.sort(list_similarities)
+        print(sorted)
 
         indices = indices[-n_k:].cpu().numpy()
 
