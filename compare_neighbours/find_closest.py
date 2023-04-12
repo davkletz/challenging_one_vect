@@ -3,7 +3,7 @@ import torch
 import numpy as np
 from random import shuffle
 from joblib import load
-
+import sys
 cos = nn.CosineSimilarity(dim = 0)
 
 
@@ -59,7 +59,7 @@ def get_list_vectors(list_vectors, k):
 
 
 
-k = 4
+k = int(sys.argv[1])
 
 lng = "fr"
 seed = "0"
