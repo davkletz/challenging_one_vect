@@ -77,8 +77,8 @@ r = most_similars(0, list_vectors, 25)
 #print(r)
 
 
-id_to_word = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/res_k_{k}_seed_{seed}_{lng}_gsd_id_to_word.joblib")
-word_to_id = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/res_k_{k}_seed_{seed}_{lng}_gsd_word_to_id.joblib")
+id_to_word = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_id_to_word.joblib")
+word_to_id = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_word_to_id.joblib")
 
 gr = word_to_id["grand"]
 
