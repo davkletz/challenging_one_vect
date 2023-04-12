@@ -14,6 +14,7 @@ def eucl_distance(v_1, v_2):
 def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
 
     closests = []
+    distances = []
 
 
     k = 0
@@ -39,13 +40,15 @@ def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
         #print(sorted)
 
         indices = indices[:n_k].cpu().numpy()
+        sorted = sorted[:n_k].cpu().numpy()
 
         closests.append(indices)
+        distances.append(sorted)
 
 
 
 
-    return closests
+    return closests, distances
 
 
 def get_list_vectors(list_vectors, k):
@@ -86,15 +89,15 @@ word_to_id = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gs
 
 gr = word_to_id[word]
 
-r = most_similars(gr, list_vectors, 25)
+r, d = most_similars(gr, list_vectors, 25)
 
-for results in r:
+for i, results in enumerate(r):
     print(f'\n\n###')
     for i, element in enumerate(results):
         if element in id_to_word:
-            print(id_to_word[element])
+            print(f"{id_to_word[element]} : {d[i]}" )
         else:
-            print(f"not in dico : {element}")
+            print(f"not in dico : {element} : {d[i]}")
 
 list_idx = list(range(len(list_vectors[0])))
 
