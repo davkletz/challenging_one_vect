@@ -36,11 +36,9 @@ def most_similars( idx_vect_to_compare, all_list_vectors, n_k):
         list_similarities = torch.tensor(list_similarities)
 
         sorted, indices = torch.sort(list_similarities)
-        print(sorted)
+        #print(sorted)
 
-        indices = indices[-n_k:].cpu().numpy()
-
-        indices = np.flip(indices)
+        indices = indices[:n_k].cpu().numpy()
 
         closests.append(indices)
 
