@@ -68,6 +68,8 @@ k = int(sys.argv[1])
 
 word = sys.argv[2]
 
+nb_ex = int(sys.argv[3])
+
 lng = "fr"
 seed = "0"
 model_name = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_0_fr_gsd_uas"
@@ -79,7 +81,7 @@ list_vectors = model["W.weight"]
 
 list_vectors = get_list_vectors(list_vectors, k)
 
-r = most_similars(0, list_vectors, 25)
+r = most_similars(0, list_vectors, nb_ex)
 
 #print(r)
 
@@ -89,7 +91,7 @@ word_to_id = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gs
 
 gr = word_to_id[word]
 
-r, d = most_similars(gr, list_vectors, 25)
+r, d = most_similars(gr, list_vectors, )
 
 for j, results in enumerate(r):
     print(f'\n\n###')
