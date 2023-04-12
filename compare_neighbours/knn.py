@@ -81,7 +81,7 @@ list_vectors = model["W.weight"]
 
 list_vectors = get_list_vectors(list_vectors, k)
 
-r = most_similars(0, list_vectors, nb_ex)
+#r = most_similars(0, list_vectors, nb_ex)
 
 #print(r)
 
@@ -91,7 +91,7 @@ word_to_id = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gs
 
 gr = word_to_id[word]
 
-r, d = most_similars(gr, list_vectors, )
+r, d = most_similars(gr, list_vectors,nb_ex)
 
 for j, results in enumerate(r):
     print(f'\n\n###')
