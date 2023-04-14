@@ -1,5 +1,5 @@
 from sklearn.neighbors import NearestCentroid
-import torch
+from torch import load
 import numpy as np
 import sys
 
@@ -24,6 +24,48 @@ def get_cluster_centroid(arr):
     return sum_ar/length
 
 
+def eucl_distance(v_1, v_2):
+    return np.linalg.norm(v_1 - v_2)
+def most_similars(vect_to_compare, all_list_vectors, n_k):
+
+    closests = []
+    distances = []
+
+
+    k = 0
+
+    for list_vectors in all_list_vectors:
+        current_vect_to_compare = vect_to_compare
+
+        list_similarities = []
+
+        for element in list_vectors:
+            current_dist = eucl_distance(current_vect_to_compare, element)
+            list_similarities.append(current_dist)
+
+
+        list_similarities = np.array(list_similarities)
+
+        sorted = np.sort(list_similarities)
+        indices = np.argsort(list_similarities)
+
+
+        indices = indices[:n_k].cpu().numpy()
+        sorted = sorted[:n_k].cpu().numpy()
+
+        closests.append(indices)
+        distances.append(sorted)
+
+
+
+
+    return closests, distances
+
+
+
+id_to_word = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_id_to_word.joblib")
+word_to_id = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_word_to_id.joblib")
+
 
 
 k = int(sys.argv[1])
@@ -39,7 +81,7 @@ except:
 
 model_name = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_{seed}_fr_gsd_uas"
 device = "cpu"
-model = torch.load(model_name, map_location=device)
+model = load(model_name, map_location=device)
 
 
 list_vectors = model["W.weight"]
@@ -59,5 +101,23 @@ for k in range(len(list_vectors)):
 
     print(cluster_centroid)
     print(cluster_centroid.shape)
+
+
+    update_vects = np.subtract(cluster_centroid, k_list_vectors[0])
+
+
+    origin = np.zeros(cluster_centroid.shape)
+
+    most_similars()
+
+
+
+
+
+
+
+
+
+
 
 
