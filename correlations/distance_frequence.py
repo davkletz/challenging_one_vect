@@ -101,7 +101,15 @@ for k in range(len(list_vectors)):
 
     origin = np.zeros(cluster_centroid.shape)
 
-    closest = most_similars(origin, update_vects, 25)
+    indices, sorted = most_similars(origin, update_vects, 25)
+
+    for j, results in enumerate(indices):
+        print(f'\n\n###')
+        if results in id_to_word:
+            print(f"{id_to_word[results]} : {sorted[j]}")
+        else:
+            print(f"not in dico : {results} : {sorted[j]}")
+
 
 
 
