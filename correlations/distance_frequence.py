@@ -83,6 +83,7 @@ list_vectors = list_vectors.cpu().numpy()
 
 list_vectors = get_list_vectors(list_vectors, k)
 
+n_k = int(sys.argv[3])
 
 
 
@@ -99,7 +100,7 @@ for k in range(len(list_vectors)):
 
     origin = np.zeros(cluster_centroid.shape)
 
-    indices, sorted = most_similars(origin, update_vects, 25)
+    indices, sorted = most_similars(origin, update_vects, n_k)
 
     for j, results in enumerate(indices):
         print(f'\n###')
