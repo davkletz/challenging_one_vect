@@ -74,7 +74,7 @@ nb_ex = int(sys.argv[3])
 lng = "fr"
 
 try:
-    seed = sys.argv[3]
+    seed = sys.argv[4]
 except:
     seed = "0"
 
