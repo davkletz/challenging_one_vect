@@ -92,9 +92,6 @@ for k in range(len(list_vectors)):
 
     cluster_centroid = get_cluster_centroid(k_list_vectors)
 
-    print(cluster_centroid)
-    print(cluster_centroid.shape)
-
 
     update_vects = np.subtract(cluster_centroid, k_list_vectors[0])
 
