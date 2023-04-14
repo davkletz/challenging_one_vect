@@ -49,7 +49,7 @@ list_vectors = list_vectors.cpu().numpy()
 
 list_vectors = get_list_vectors(list_vectors, k)
 
-print(list_vectors[0].shape)
+
 
 
 for k in range(len(list_vectors)):
