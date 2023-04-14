@@ -64,8 +64,14 @@ k = int(sys.argv[1])
 word = sys.argv[2]
 
 lng = "fr"
-seed = "0"
-model_name = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_0_fr_gsd_uas"
+
+try:
+    seed = sys.argv[3]
+except:
+    seed = "0"
+
+
+model_name = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_{seed}_fr_gsd_uas"
 device = "cpu"
 model = torch.load(model_name, map_location=device)
 
