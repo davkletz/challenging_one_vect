@@ -56,3 +56,8 @@ list_vectors = get_list_vectors(list_vectors, k)
 labs = [0 for i in list_vectors]
 
 cluster_centroid = get_cluster_centroid(list_vectors, labs)
+
+print(cluster_centroid)
+print(cluster_centroid.shape)
+
+
