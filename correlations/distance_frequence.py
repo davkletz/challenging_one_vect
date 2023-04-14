@@ -19,7 +19,6 @@ def get_list_vectors(list_vectors, k):
 
 def get_cluster_centroid(X, y):
 
-
     clf = NearestCentroid()
     clf.fit(X, y)
 
@@ -27,16 +26,14 @@ def get_cluster_centroid(X, y):
 
 
 
+
 k = int(sys.argv[1])
 
-word = sys.argv[2]
-
-nb_ex = int(sys.argv[3])
 
 lng = "fr"
 
 try:
-    seed = sys.argv[4]
+    seed = sys.argv[2]
 except:
     seed = "0"
 
