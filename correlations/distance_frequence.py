@@ -1,5 +1,6 @@
 from sklearn.neighbors import NearestCentroid
 from torch import load
+from joblib import load as ld
 import numpy as np
 import sys
 
@@ -53,7 +54,7 @@ def most_similars(vect_to_compare, list_vectors, n_k):
     indices = indices[:n_k].cpu().numpy()
     sorted = sorted[:n_k].cpu().numpy()
 
-  
+
 
 
 
@@ -62,8 +63,8 @@ def most_similars(vect_to_compare, list_vectors, n_k):
 
 
 lng = "fr"
-id_to_word = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_id_to_word.joblib")
-word_to_id = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_word_to_id.joblib")
+id_to_word = ld(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_id_to_word.joblib")
+word_to_id = ld(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_word_to_id.joblib")
 
 
 
