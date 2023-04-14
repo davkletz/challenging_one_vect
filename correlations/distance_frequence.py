@@ -62,7 +62,7 @@ def most_similars(vect_to_compare, all_list_vectors, n_k):
     return closests, distances
 
 
-
+lng = "fr"
 id_to_word = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_id_to_word.joblib")
 word_to_id = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_word_to_id.joblib")
 
