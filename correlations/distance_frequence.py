@@ -26,7 +26,7 @@ def get_cluster_centroid(arr):
 
 def eucl_distance(v_1, v_2):
     return np.linalg.norm(v_1 - v_2)
-def most_similars(vect_to_compare, all_list_vectors, n_k):
+def most_similars(vect_to_compare, list_vectors, n_k):
 
     closests = []
     distances = []
@@ -34,32 +34,31 @@ def most_similars(vect_to_compare, all_list_vectors, n_k):
 
     k = 0
 
-    for list_vectors in all_list_vectors:
-        current_vect_to_compare = vect_to_compare
 
-        list_similarities = []
+    current_vect_to_compare = vect_to_compare
 
-        for element in list_vectors:
-            current_dist = eucl_distance(current_vect_to_compare, element)
-            list_similarities.append(current_dist)
+    list_similarities = []
 
-
-        list_similarities = np.array(list_similarities)
-
-        sorted = np.sort(list_similarities)
-        indices = np.argsort(list_similarities)
+    for element in list_vectors:
+        current_dist = eucl_distance(current_vect_to_compare, element)
+        list_similarities.append(current_dist)
 
 
-        indices = indices[:n_k].cpu().numpy()
-        sorted = sorted[:n_k].cpu().numpy()
+    list_similarities = np.array(list_similarities)
 
-        closests.append(indices)
-        distances.append(sorted)
+    sorted = np.sort(list_similarities)
+    indices = np.argsort(list_similarities)
 
+
+    indices = indices[:n_k].cpu().numpy()
+    sorted = sorted[:n_k].cpu().numpy()
+
+  
 
 
 
-    return closests, distances
+
+    return indices, sorted
 
 
 lng = "fr"
@@ -108,7 +107,7 @@ for k in range(len(list_vectors)):
 
     origin = np.zeros(cluster_centroid.shape)
 
-    most_similars()
+    closest = most_similars(origin, update_vects, 25)
 
 
 
