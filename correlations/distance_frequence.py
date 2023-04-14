@@ -1,4 +1,4 @@
-from sklearn.neighbors.nearest_centroid import NearestCentroid
+from sklearn.neighbors import NearestCentroid
 import torch
 import numpy as np
 import sys
