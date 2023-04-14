@@ -16,13 +16,12 @@ def get_list_vectors(list_vectors, k):
 
     return results
 
-
-def get_cluster_centroid(X, y):
-
-    clf = NearestCentroid()
-    clf.fit(X, y)
-
-    return clf.centroids_
+def get_cluster_centroid(arr):
+    length = arr.shape[0]
+    print(arr.shape)
+    sum_ar = np.sum(arr, axis=0)
+    print(sum_ar.shape)
+    return sum_ar/length
 
 
 
