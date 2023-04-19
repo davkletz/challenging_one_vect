@@ -55,8 +55,9 @@ def compare_freq_dist(words_id, freqs, dist):
 
     for j, results in enumerate(words_id):
         if results in id_to_word:
-            x.append(freqs[id_to_word[results]])
-            y.append(dist[j])
+            if id_to_word[results] in freqs:
+                x.append(freqs[id_to_word[results]])
+                y.append(dist[j])
 
     return x, y
 
@@ -128,6 +129,8 @@ for k in range(len(list_vectors)):
         sorted[i] = sorted[i]/min_dist
 
     x, y = compare_freq_dist(indices, dico_freq, sorted)
+
+    print(len(x), len(y))
 
     dump([x,y], f"freq_dis_fr.joblib")
 
