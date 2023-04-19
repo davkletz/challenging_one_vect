@@ -4,11 +4,11 @@ path = "/data/mdehouck/thick_vectors/models"
 
 
 lng = sys.argv[1]
-
+corp = sys.argv[2]
 
 id_to_word = {}
 word_to_id = {}
-with open(f"{path}/res_k_{1}_seed_{0}_{lng}_gsd.words", "r") as f:
+with open(f"{path}/res_k_{1}_seed_{0}_{lng}_{corp}.words", "r") as f:
     for line in f:
 
         vals = line.split(" ")
