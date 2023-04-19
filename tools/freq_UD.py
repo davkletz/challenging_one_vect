@@ -25,6 +25,6 @@ def get_freq(path):
 
 if __name__ == "__main__":
 
-    path = "/data/dkletz/data/UD/ud-treebanks-v2.11/UD_French-GSD"
+    path = "/data/dkletz/data/UD/ud-treebanks-v2.11/UD_French-GSD/fr_gsd-ud-dev.conllu"
     dico = get_freq(path)
     print(dico)
