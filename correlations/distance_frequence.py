@@ -54,7 +54,7 @@ def compare_freq_dist(words_id, freqs, dist):
     y = [] #ordo : distance au centre
 
     for j, results in enumerate(words_id):
-        if results in freqs:
+        if results in id_to_word:
             x.append(freqs[id_to_word[results]])
             y.append(dist[j])
 
