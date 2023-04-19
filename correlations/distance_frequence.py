@@ -92,10 +92,10 @@ list_vectors = get_list_vectors(list_vectors, k)
 n_k = int(sys.argv[3])
 
 
-path = "/data/dkletz/data/UD/ud-treebanks-v2.11"
+path = "/data/dkletz/Other_exp/AvecMatthieu/challenging_one_vect/tools"
 corpus = "UD_French-GSD"
 file = "fr_gsd-ud-dev.conllu"
-dico_freq = ld(f"dico_{corpus}_{file[:-7]}.joblib")
+dico_freq = ld(f"{path}/dico_{corpus}_{file[:-7]}.joblib")
 
 
 
