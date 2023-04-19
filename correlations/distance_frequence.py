@@ -20,9 +20,9 @@ def get_list_vectors(list_vectors, k):
 
 def get_cluster_centroid(arr):
     length = arr.shape[0]
-    print(arr.shape)
+    #print(arr.shape)
     sum_ar = np.sum(arr, axis=0)
-    print(sum_ar.shape)
+    #print(sum_ar.shape)
     return sum_ar/length
 
 
@@ -87,8 +87,10 @@ model = load(model_name, map_location=device)
 list_vectors = model["W.weight"]
 
 list_vectors = list_vectors.cpu().numpy()
+print(list_vectors.shape)
 
 list_vectors = get_list_vectors(list_vectors, k)
+
 
 n_k = int(sys.argv[3])
 
