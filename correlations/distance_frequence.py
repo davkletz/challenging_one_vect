@@ -64,6 +64,9 @@ def compare_freq_dist(words_id, freqs, dist):
                 x.append(0)
                 y.append(dist[j])
 
+        else:
+            print(f"not in id_to_word {results}")
+
 
     return x, y
 

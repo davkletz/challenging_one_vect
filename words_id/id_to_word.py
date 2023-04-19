@@ -31,3 +31,7 @@ with open(f"{path}/res_k_{1}_seed_{0}_{lng}_{corp}.words", "r") as f:
 
 dump(id_to_word, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_id_to_word.joblib")
 dump(word_to_id, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_word_to_id.joblib")
+
+
+print(len(id_to_word))
+print(len(word_to_id))
