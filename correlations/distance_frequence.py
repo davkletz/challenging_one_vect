@@ -88,7 +88,7 @@ file = sys.argv[5]
 lng = sys.argv[6]
 
 
-name_corp = corpus[:-16]
+name_corp = file[:-16]
 model_name = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_{seed}_{name_corp}_uas"
 device = "cpu"
 model = load(model_name, map_location=device)
