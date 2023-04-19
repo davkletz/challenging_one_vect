@@ -1,7 +1,7 @@
 from io import open
 from conllu import parse_incr
 from joblib import dump
-
+import sys
 
 def get_freq(path):
 
@@ -26,11 +26,14 @@ def get_freq(path):
 if __name__ == "__main__":
 
     path = "/data/dkletz/data/UD/ud-treebanks-v2.11"
-    corpus = "UD_French-GSD"
-    file = "fr_gsd-ud-train.conllu"
+    #corpus = "UD_French-GSD"
+    #file = "fr_gsd-ud-train.conllu"
 
-    corpus = "UD_Hebrew-HTB"
-    file = "he_htb-ud-train.conllu"
+    #corpus = "UD_Hebrew-HTB"
+    #file = "he_htb-ud-train.conllu"
+
+    corpus = sys.argv[1]
+    file = sys.argv[2]
     dico = get_freq(f"{path}/{corpus}/{file}")
     #print(dico)
     dump(dico, f"dico_{corpus}_{file[:-7]}.joblib")
