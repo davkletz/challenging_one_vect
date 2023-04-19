@@ -82,8 +82,14 @@ try:
 except:
     seed = "0"
 
+corpus = sys.argv[4]
+file = sys.argv[5]
 
-model_name = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_{seed}_fr_gsd_uas"
+lng = sys.argv[6]
+
+
+name_corp = corpus[:-16]
+model_name = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_{seed}_{name_corp}_uas"
 device = "cpu"
 model = load(model_name, map_location=device)
 
@@ -91,7 +97,7 @@ model = load(model_name, map_location=device)
 list_vectors = model["W.weight"]
 
 list_vectors = list_vectors.cpu().numpy()
-print(list_vectors.shape)
+#print(list_vectors.shape)
 
 list_vectors = get_list_vectors(list_vectors, k)
 
@@ -102,10 +108,7 @@ n_k = int(sys.argv[3])
 path = "/data/dkletz/Other_exp/AvecMatthieu/challenging_one_vect/tools"
 #corpus = "UD_French-GSD"
 #file = "fr_gsd-ud-dev.conllu"
-corpus = sys.argv[4]
-file = sys.argv[5]
 
-lng = sys.argv[6]
 
 id_to_word = ld(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_id_to_word.joblib")
 word_to_id = ld(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_word_to_id.joblib")
