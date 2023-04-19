@@ -1,6 +1,7 @@
 from sklearn.neighbors import NearestCentroid
 from torch import load
 from joblib import load as ld
+from joblib import dump
 import numpy as np
 import sys
 
@@ -47,12 +48,19 @@ def most_similars(vect_to_compare, list_vectors, n_k):
     indices = indices[:n_k]
     sorted = sorted[:n_k]
 
-
-
-
-
-
     return indices, sorted
+
+
+def compare_freq_dist(words_id, freqs, dist):
+    x = [] #abs : frequence apparition
+    y = [] #ordo : distance au centre
+
+    for j, results in enumerate(words_id):
+        if results in freqs:
+            x.append(freqs[id_to_word[results]])
+            y.append(dist[j])
+
+    return x, y
 
 
 lng = "fr"
@@ -86,6 +94,12 @@ list_vectors = get_list_vectors(list_vectors, k)
 n_k = int(sys.argv[3])
 
 
+path = "/data/dkletz/data/UD/ud-treebanks-v2.11"
+corpus = "UD_French-GSD"
+file = "fr_gsd-ud-dev.conllu"
+dico_freq = ld(f"dico_{corpus}_{file[:-7]}.joblib")
+
+
 
 for k in range(len(list_vectors)):
     k_list_vectors = list_vectors[k]
@@ -108,6 +122,26 @@ for k in range(len(list_vectors)):
             print(f"{id_to_word[results]} : {sorted[j]}")
         else:
             print(f"not in dico : {results} : {sorted[j]}")
+
+
+    min_dist = np.min(sorted)
+
+    for i in range(len(sorted)):
+        sorted[i] = sorted[i]/min_dist
+
+    x, y = compare_freq_dist(indices, dico_freq, sorted)
+
+    dump([x,y], f"freq_dis_fr.joblib")
+
+
+
+
+
+
+
+
+
+
 
 
 

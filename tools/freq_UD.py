@@ -29,5 +29,5 @@ if __name__ == "__main__":
     corpus = "UD_French-GSD"
     file = "fr_gsd-ud-dev.conllu"
     dico = get_freq(f"{path}/{corpus}/{file}")
-    print(dico)
+    #print(dico)
     dump(dico, f"dico_{corpus}_{file[:-7]}.joblib")
