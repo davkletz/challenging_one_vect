@@ -27,7 +27,10 @@ if __name__ == "__main__":
 
     path = "/data/dkletz/data/UD/ud-treebanks-v2.11"
     corpus = "UD_French-GSD"
-    file = "fr_gsd-ud-dev.conllu"
+    file = "fr_gsd-ud-train.conllu"
+
+    corpus = "UD_Hebrew-HTB"
+    fil = "he_htb-ud-train.conllu"
     dico = get_freq(f"{path}/{corpus}/{file}")
     #print(dico)
     dump(dico, f"dico_{corpus}_{file[:-7]}.joblib")
