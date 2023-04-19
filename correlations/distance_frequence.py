@@ -68,16 +68,10 @@ def compare_freq_dist(words_id, freqs, dist):
     return x, y
 
 
-lng = "fr"
-id_to_word = ld(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_id_to_word.joblib")
-word_to_id = ld(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_word_to_id.joblib")
-
 
 
 k = int(sys.argv[1])
 
-
-lng = "fr"
 
 try:
     seed = sys.argv[2]
@@ -104,6 +98,12 @@ path = "/data/dkletz/Other_exp/AvecMatthieu/challenging_one_vect/tools"
 #file = "fr_gsd-ud-dev.conllu"
 corpus = sys.argv[4]
 file = sys.argv[5]
+
+lng = sys.argv[6]
+id_to_word = ld(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_id_to_word.joblib")
+word_to_id = ld(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_word_to_id.joblib")
+
+
 
 
 dico_freq = ld(f"{path}/dico_{corpus}_{file[:-7]}.joblib")

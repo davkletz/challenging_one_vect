@@ -1,14 +1,14 @@
 from joblib import dump
-
+import sys
 path = "/data/mdehouck/thick_vectors/models"
 
-k = "4"
-lng = "fr"
-seed = "0"
+
+lng = sys.argv[1]
+
 
 id_to_word = {}
 word_to_id = {}
-with open(f"{path}/res_k_{k}_seed_{seed}_{lng}_gsd.words", "r") as f:
+with open(f"{path}/res_k_{1}_seed_{0}_{lng}_gsd.words", "r") as f:
     for line in f:
 
         vals = line.split(" ")
@@ -29,5 +29,5 @@ with open(f"{path}/res_k_{k}_seed_{seed}_{lng}_gsd.words", "r") as f:
             word_to_id[vals[0]] = int(vals[1])
 
 
-dump(id_to_word, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/res_k_{k}_seed_{seed}_{lng}_gsd_id_to_word.joblib")
-dump(word_to_id, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/res_k_{k}_seed_{seed}_{lng}_gsd_word_to_id.joblib")
+dump(id_to_word, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_id_to_word.joblib")
+dump(word_to_id, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_word_to_id.joblib")
