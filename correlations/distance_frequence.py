@@ -28,7 +28,7 @@ def get_cluster_centroid(arr):
 
 def eucl_distance(v_1, v_2):
     return np.linalg.norm(v_1 - v_2)
-def most_similars(vect_to_compare, list_vectors, n_k):
+def most_similars(vect_to_compare, list_vectors):
 
     current_vect_to_compare = vect_to_compare
 
@@ -45,8 +45,6 @@ def most_similars(vect_to_compare, list_vectors, n_k):
     indices = np.argsort(list_similarities)
 
 
-    indices = indices[:n_k]
-    sorted = sorted[:n_k]
 
     return indices, sorted
 
@@ -114,9 +112,9 @@ for k in range(len(list_vectors)):
 
     origin = np.zeros(cluster_centroid.shape)
 
-    indices, sorted = most_similars(origin, update_vects, n_k)
+    indices, sorted = most_similars(origin, update_vects)
 
-    for j, results in enumerate(indices):
+    for j, results in enumerate(indices[:n_k]):
         print(f'\n###')
         if results in id_to_word:
             print(f"{id_to_word[results]} : {sorted[j]}")
