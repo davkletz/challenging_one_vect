@@ -100,8 +100,12 @@ n_k = int(sys.argv[3])
 
 
 path = "/data/dkletz/Other_exp/AvecMatthieu/challenging_one_vect/tools"
-corpus = "UD_French-GSD"
-file = "fr_gsd-ud-dev.conllu"
+#corpus = "UD_French-GSD"
+#file = "fr_gsd-ud-dev.conllu"
+corpus = sys.argv[4]
+file = sys.argv[5]
+
+
 dico_freq = ld(f"{path}/dico_{corpus}_{file[:-7]}.joblib")
 
 
@@ -138,7 +142,7 @@ for k in range(len(list_vectors)):
 
     print(len(x), len(y))
 
-    dump([x,y], f"freq_dis_fr.joblib")
+    dump([x,y], f"freq_dis_{file[:-7]}.joblib")
 
 
 
