@@ -100,11 +100,9 @@ corpus = sys.argv[4]
 file = sys.argv[5]
 
 lng = sys.argv[6]
-id_to_word = ld(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_id_to_word.joblib")
-word_to_id = ld(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_gsd_word_to_id.joblib")
 
-
-
+id_to_word = ld(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_id_to_word.joblib")
+word_to_id = ld(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng}_word_to_id.joblib")
 
 dico_freq = ld(f"{path}/dico_{corpus}_{file[:-7]}.joblib")
 
