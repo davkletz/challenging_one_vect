@@ -30,7 +30,7 @@ if __name__ == "__main__":
     file = "fr_gsd-ud-train.conllu"
 
     corpus = "UD_Hebrew-HTB"
-    fil = "he_htb-ud-train.conllu"
+    file = "he_htb-ud-train.conllu"
     dico = get_freq(f"{path}/{corpus}/{file}")
     #print(dico)
     dump(dico, f"dico_{corpus}_{file[:-7]}.joblib")
