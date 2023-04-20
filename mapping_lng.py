@@ -28,8 +28,8 @@ id_to_word_2 = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng_2
 
 path = "tools"
 
-dico_freq_1 = load(f"{path}/dico_{corpus_1}_{lng_1}.joblib")
-dico_freq_2 = load(f"{path}/dico_{corpus_2}_{lng_2}.joblib")
+dico_freq_1 = load(f"{path}/dico_{corpus_1}_{lng_1}-ud-train.joblib")
+dico_freq_2 = load(f"{path}/dico_{corpus_2}_{lng_2}-ud-train.joblib")
 
 vects_1 = get_norm_freq_sets(vects_1, id_to_word_1)
 vects_2 = get_norm_freq_sets(vects_2, id_to_word_2)
