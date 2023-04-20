@@ -25,7 +25,7 @@ vects_2 = get_vectors(lng_2, k, seed)
 id_to_word_1 = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng_1[:2]}_id_to_word.joblib")
 id_to_word_2 = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng_2[:2]}_id_to_word.joblib")
 
-print(id_to_word_1)
+#print(id_to_word_1)
 
 
 path = "tools"
