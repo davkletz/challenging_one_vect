@@ -11,12 +11,12 @@ k = 1
 seed = 0
 
 
-file_1 = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_{seed}_{lng_1}_uas"
-file_2 = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_{seed}_{lng_2}_uas"
+#file_1 = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_{seed}_{lng_1}_uas"
+#file_2 = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_{seed}_{lng_2}_uas"
 
-vects_1 = get_vectors(file_1, k, seed)
+vects_1 = get_vectors(lng_1, k, seed)
 
-vects_2 = get_vectors(file_2, k, seed)
+vects_2 = get_vectors(lng_2, k, seed)
 
 
 
