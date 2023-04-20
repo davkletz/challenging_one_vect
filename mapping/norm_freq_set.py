@@ -11,6 +11,9 @@ from joblib import load
 def get_norm_freq_vect(vect, i, id_to_word, dico_freq):
 
     norm_vect = np.linalg.norm(vect)
+    if i not in id_to_word:
+        print(f"i {i} not in id_to_word")
+        return None
     word = id_to_word[i]
     if word in dico_freq:
         freq = dico_freq[word]
