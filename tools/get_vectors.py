@@ -19,6 +19,8 @@ def get_vectors(name_corp, k, seed):
     model = load(model_name, map_location=device)
 
 
+
+
     list_vectors = model["W.weight"]
 
     list_vectors = list_vectors.cpu().numpy()
