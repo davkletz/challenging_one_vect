@@ -25,7 +25,7 @@ def get_freq(path):
 
 if __name__ == "__main__":
 
-    path = "tools"
+    path = "/data/dkletz/data/UD/ud-treebanks-v2.11"
     #corpus = "UD_French-GSD"
     #file = "fr_gsd-ud-train.conllu"
 
