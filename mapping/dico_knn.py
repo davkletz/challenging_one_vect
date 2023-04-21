@@ -29,12 +29,12 @@ def get_nearest(v_1, set_others, w_2):
 def get_map(standard_1, standard_2, w_1, w_2):
 
     map = {}
-    for v_1 in standard_1:
+    for i, v_1 in enumerate(standard_1):
         nearest = get_nearest(v_1, standard_2, w_2)
-        print(w_1)
-        print(nearest)
+        #print(w_1[])
+        #print(nearest)
 
-        map[w_1] = nearest
+        map[w_1[i]] = nearest
 
 
     return map
