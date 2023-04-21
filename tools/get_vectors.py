@@ -13,8 +13,11 @@ def get_list_vectors(list_vectors, k):
 
     return results
 
+
+
 def get_vectors(name_corp, k, seed):
-    model_name = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_{seed}_{name_corp}_uas"
+    model_name = f"/data/mdehouck/thick_vectors/models/res_freq_120_plain_tuned_seed_{seed}_{name_corp}_uaslas"
+    #model_name = f"/data/mdehouck/thick_vectors/models/res_k_{k}_seed_{seed}_{name_corp}_uas"
     device = "cpu"
     model = load(model_name, map_location=device)
 
