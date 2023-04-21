@@ -42,29 +42,26 @@ dico_freq_1 = load(f"{path}/dico_{corpus_1}_{lng_1}-ud-train.joblib")
 dico_freq_2 = load(f"{path}/dico_{corpus_2}_{lng_2}-ud-train.joblib")
 
 
-if norm_freq:
+for i in range(k):
 
-    for i in range(k):
+    if norm_freq:
+        vects_1, w_1, idx_1 = get_norm_freq_sets(vects_1[i], id_to_word_1, dico_freq_1)
+        vects_2, w_2, idx_2 = get_norm_freq_sets(vects_2[i], id_to_word_2, dico_freq_2)
+        path = "norm_freq"
+    else:
+        vects_1, w_1, idx_1 = get_freq_sets(vects_1[i], id_to_word_1, dico_freq_1)
+        vects_2, w_2, idx_2 = get_freq_sets(vects_2[i], id_to_word_2, dico_freq_2)
+        path = "freq"
 
-        vects_1, w_1 = get_norm_freq_sets(vects_1[i], id_to_word_1, dico_freq_1)
-        vects_2, w_2 = get_norm_freq_sets(vects_2[i], id_to_word_2, dico_freq_2)
+    dico_1_2, dico_2_1, map_idx_1_2, map_idx_2_1 = get_dico_knn(vects_1, vects_2, w_1, w_2, idx_1, idx_2)
 
-        dico_1_2, dico_2_1 = get_dico_knn(vects_1, vects_2, w_1, w_2)
+    dump(dico_1_2, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/{path}/{lng_1}_{lng_2}_{corpus_1}_{corpus_2}_k_{k}_seed_{seed}.joblib")
+    dump(dico_2_1, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/{path}/{lng_2}_{lng_1}_{corpus_2}_{corpus_1}_k_{k}_seed_{seed}.joblib")
+    dump(map_idx_1_2,
+         f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/{path}/{lng_1}_{lng_2}_{corpus_1}_{corpus_2}_k_{k}_seed_{seed}_map_idx_1_2.joblib")
+
+    dump(map_idx_2_1,
+         f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/{path}/{lng_2}_{lng_1}_{corpus_2}_{corpus_1}_k_{k}_seed_{seed}_map_idx_2_1.joblib")
 
 
-        dump(dico_1_2, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/norm_freq/{lng_1}_{lng_2}_{corpus_1}_{corpus_2}_k_{k}_seed_{seed}.joblib")
-        dump(dico_2_1, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/norm_freq/{lng_2}_{lng_1}_{corpus_2}_{corpus_1}_k_{k}_seed_{seed}.joblib")
-
-
-else:
-    for i in range(k):
-        vects_1, w_1 = get_freq_sets(vects_1[i], id_to_word_1, dico_freq_1)
-        vects_2, w_2 = get_freq_sets(vects_2[i], id_to_word_2, dico_freq_2)
-
-        dico_1_2, dico_2_1 = get_dico_knn(vects_1, vects_2, w_1, w_2)
-
-        dump(dico_1_2,
-             f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/freq/{lng_1}_{lng_2}_{corpus_1}_{corpus_2}_k_{k}_seed_{seed}.joblib")
-        dump(dico_2_1,
-             f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/freq/{lng_2}_{lng_1}_{corpus_2}_{corpus_1}_k_{k}_seed_{seed}.joblib")
 

@@ -23,7 +23,6 @@ def get_vectors(name_corp, k, seed):
 
 
 
-
     list_vectors = model["W.weight"]
 
     list_vectors = list_vectors.cpu().numpy()

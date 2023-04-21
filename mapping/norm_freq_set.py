@@ -29,16 +29,18 @@ def get_norm_freq_sets(set_vects, id_to_word, dico_freq):
     """
     list_voc = []
     norm_freq_sets = []
+    details_idx = []
     for i, vector in enumerate(set_vects):
         q_v, word = get_norm_freq_vect(vector, i, id_to_word, dico_freq)
         if q_v is not None:
             norm_freq_sets.append(q_v)
             list_voc.append(word)
+            details_idx.append(i)
 
 
     norm_freq_sets = np.array(norm_freq_sets)
 
-    return norm_freq_sets, list_voc
+    return norm_freq_sets, list_voc, details_idx
 
 
 
@@ -61,13 +63,15 @@ def get_freq_sets(set_vects, id_to_word, dico_freq):
     """
     list_voc = []
     freq_sets = []
+    details_idx = []
     for i, vector in enumerate(set_vects):
         q_v, word = get_freq_vect(i, id_to_word, dico_freq)
         if q_v is not None:
             freq_sets.append(q_v)
             list_voc.append(word)
+            details_idx.append(i)
 
 
     freq_sets = np.array(freq_sets)
 
-    return freq_sets, list_voc
+    return freq_sets, list_voc, details_idx
