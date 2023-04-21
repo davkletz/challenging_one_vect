@@ -62,7 +62,7 @@ def get_freq_sets(set_vects, id_to_word, dico_freq):
     list_voc = []
     freq_sets = []
     for i, vector in enumerate(set_vects):
-        q_v, word = get_norm_freq_vect(i, id_to_word, dico_freq)
+        q_v, word = get_freq_vect(i, id_to_word, dico_freq)
         if q_v is not None:
             freq_sets.append(q_v)
             list_voc.append(word)
