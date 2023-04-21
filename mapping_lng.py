@@ -35,7 +35,7 @@ dico_freq_2 = load(f"{path}/dico_{corpus_2}_{lng_2}-ud-train.joblib")
 
 for i in range(k):
 
-    vects_1 = get_norm_freq_sets(vects_1[i], id_to_word_1, dico_freq_1)
-    vects_2 = get_norm_freq_sets(vects_2[i], id_to_word_2, dico_freq_2)
+    vects_1, w_1 = get_norm_freq_sets(vects_1[i], id_to_word_1, dico_freq_1)
+    vects_2, w_2 = get_norm_freq_sets(vects_2[i], id_to_word_2, dico_freq_2)
 
-    dico_1_2, dico_2_1 = get_dico_knn(vects_1, vects_2)
+    dico_1_2, dico_2_1 = get_dico_knn(vects_1, vects_2, w_1, w_2)
