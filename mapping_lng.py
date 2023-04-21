@@ -20,7 +20,7 @@ seed = 0
 
 vects_1 = get_vectors(lng_1, k, seed)
 vects_2 = get_vectors(lng_2, k, seed)
-print((vects_2))
+#print((vects_2))
 
 id_to_word_1 = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng_1[:2]}_id_to_word.joblib")
 id_to_word_2 = load(f"/data/dkletz/Other_exp/AvecMatthieu/dicos_ids_words/{lng_2[:2]}_id_to_word.joblib")
@@ -33,7 +33,9 @@ path = "tools"
 dico_freq_1 = load(f"{path}/dico_{corpus_1}_{lng_1}-ud-train.joblib")
 dico_freq_2 = load(f"{path}/dico_{corpus_2}_{lng_2}-ud-train.joblib")
 
-vects_1 = get_norm_freq_sets(vects_1, id_to_word_1, dico_freq_1)
-vects_2 = get_norm_freq_sets(vects_2, id_to_word_2, dico_freq_2)
+for i in range(k):
 
-dico_1_2, dico_2_1 = get_dico_knn(vects_1, vects_2)
+    vects_1 = get_norm_freq_sets(vects_1[i], id_to_word_1, dico_freq_1)
+    vects_2 = get_norm_freq_sets(vects_2[i], id_to_word_2, dico_freq_2)
+
+    dico_1_2, dico_2_1 = get_dico_knn(vects_1, vects_2)
