@@ -30,6 +30,8 @@ def get_map(standard_1, standard_2, w_1, w_2):
 
     map = {}
     for i, v_1 in enumerate(standard_1):
+        if i % 1000 == 0:
+            print(i)
         nearest = get_nearest(v_1, standard_2, w_2)
         #print(w_1[])
         #print(nearest)
@@ -48,7 +50,11 @@ def get_dico_knn(vectors_1, vectors_2, w_1, w_2):
     standard_1 = standardize_vects(vectors_1)
     standard_2 = standardize_vects(vectors_2)
 
+    print("map 1")
+
     map_1_2 = get_map(standard_1, standard_2, w_1, w_2)
+
+    print("map 2")
     map_2_1 = get_map(standard_2, standard_1, w_2, w_1)
 
 
