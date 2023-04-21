@@ -46,8 +46,8 @@ def get_dico_knn(vectors_1, vectors_2, w_1, w_2):
     standard_1 = standardize_vects(vectors_1)
     standard_2 = standardize_vects(vectors_2)
 
-    map_1_2 = get_map(standard_1, standard_2)
-    map_2_1 = get_map(standard_2, standard_1)
+    map_1_2 = get_map(standard_1, standard_2, w_1, w_2)
+    map_2_1 = get_map(standard_2, standard_1, w_2, w_1)
 
 
     return map_1_2, map_2_1
