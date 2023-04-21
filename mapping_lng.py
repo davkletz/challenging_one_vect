@@ -1,7 +1,7 @@
 import sys
 from tools.get_vectors import get_vectors
 from mapping.dico_knn import get_dico_knn
-from joblib import load
+from joblib import load, dump
 from mapping.norm_freq_set import get_norm_freq_sets
 
 lng_1 = sys.argv[1]
@@ -39,3 +39,7 @@ for i in range(k):
     vects_2, w_2 = get_norm_freq_sets(vects_2[i], id_to_word_2, dico_freq_2)
 
     dico_1_2, dico_2_1 = get_dico_knn(vects_1, vects_2, w_1, w_2)
+
+
+    dump(dico_1_2, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/{lng_1}_{lng_2}_{corpus_1}_{corpus_2}_k_{k}_seed_{seed}.joblib")
+    dump(dico_2_1, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/{lng_2}_{lng_1}_{corpus_2}_{corpus_1}_k_{k}_seed_{seed}.joblib")
