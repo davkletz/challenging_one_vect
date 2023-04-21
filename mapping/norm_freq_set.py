@@ -39,3 +39,35 @@ def get_norm_freq_sets(set_vects, id_to_word, dico_freq):
     norm_freq_sets = np.array(norm_freq_sets)
 
     return norm_freq_sets, list_voc
+
+
+
+def get_freq_vect(i, id_to_word, dico_freq):
+
+    if i not in id_to_word:
+        print(f"i {i} not in id_to_word")
+        return None, None
+    word = id_to_word[i]
+    if word in dico_freq:
+        freq = dico_freq[word]
+        return freq, word
+    print(f"word {word} not in dico_freq")
+    return None, None
+
+def get_freq_sets(set_vects, id_to_word, dico_freq):
+    """
+    :param set_vects: list of list of vectors
+    :return: list of list of normalized frequencies
+    """
+    list_voc = []
+    freq_sets = []
+    for i, vector in enumerate(set_vects):
+        q_v, word = get_norm_freq_vect(i, id_to_word, dico_freq)
+        if q_v is not None:
+            freq_sets.append(q_v)
+            list_voc.append(word)
+
+
+    freq_sets = np.array(freq_sets)
+
+    return freq_sets, list_voc

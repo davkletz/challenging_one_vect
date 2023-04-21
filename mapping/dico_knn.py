@@ -43,6 +43,7 @@ def get_map(standard_1, standard_2, w_1, w_2):
 
 
 
+
 def get_dico_knn(vectors_1, vectors_2, w_1, w_2):
 
     print(vectors_2.shape)
