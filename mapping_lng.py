@@ -15,7 +15,7 @@ try:
         norm_freq = True
     else:
         norm_freq = False
-        
+
 except:
     norm_freq = True
 
@@ -52,8 +52,8 @@ if norm_freq:
         dico_1_2, dico_2_1 = get_dico_knn(vects_1, vects_2, w_1, w_2)
 
 
-        dump(dico_1_2, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/{lng_1}_{lng_2}_{corpus_1}_{corpus_2}_k_{k}_seed_{seed}.joblib")
-        dump(dico_2_1, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/{lng_2}_{lng_1}_{corpus_2}_{corpus_1}_k_{k}_seed_{seed}.joblib")
+        dump(dico_1_2, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/norm_freq/{lng_1}_{lng_2}_{corpus_1}_{corpus_2}_k_{k}_seed_{seed}.joblib")
+        dump(dico_2_1, f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/norm_freq/{lng_2}_{lng_1}_{corpus_2}_{corpus_1}_k_{k}_seed_{seed}.joblib")
 
 
 else:
@@ -64,7 +64,7 @@ else:
         dico_1_2, dico_2_1 = get_dico_knn(vects_1, vects_2, w_1, w_2)
 
         dump(dico_1_2,
-             f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/{lng_1}_{lng_2}_{corpus_1}_{corpus_2}_k_{k}_seed_{seed}.joblib")
+             f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/freq/{lng_1}_{lng_2}_{corpus_1}_{corpus_2}_k_{k}_seed_{seed}.joblib")
         dump(dico_2_1,
-             f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/{lng_2}_{lng_1}_{corpus_2}_{corpus_1}_k_{k}_seed_{seed}.joblib")
+             f"/data/dkletz/Other_exp/AvecMatthieu/dicos_knn/freq/{lng_2}_{lng_1}_{corpus_2}_{corpus_1}_k_{k}_seed_{seed}.joblib")
 
