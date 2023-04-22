@@ -64,7 +64,7 @@ def get_dico_knn(vectors_1, vectors_2, w_1, w_2, idx_1, idx_2):
     map_1_2, map_idx_1_2 = get_map(standard_1, standard_2, w_1, w_2, idx_1, idx_2)
 
     print("map 2")
-    map_2_1, map_idx_2_1 = get_map(standard_2, standard_1, w_1, w_2, idx_1, idx_2)
+    map_2_1, map_idx_2_1 = get_map(standard_2, standard_1,  w_2,w_1,  idx_2, idx_1)
 
 
     return map_1_2, map_2_1, map_idx_1_2, map_idx_2_1
