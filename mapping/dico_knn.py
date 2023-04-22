@@ -31,7 +31,7 @@ def get_nearest(v_1, set_others, w_2):
 def get_map(standard_1, standard_2, w_1, w_2, idx_1, idx_2):
 
     print(len(standard_2))
-    print(w_2.shape)
+    print(len(w_2))
 
     map_words = {}
     map_idx = {}
