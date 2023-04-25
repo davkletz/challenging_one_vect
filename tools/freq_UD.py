@@ -37,3 +37,12 @@ if __name__ == "__main__":
     dico = get_freq(f"{path}/{corpus}/{file}")
     #print(dico)
     #dump(dico, f"dico_{corpus}_{file[:-7]}.joblib")
+
+    print(len(dico))
+    mm = 0
+    for k in dico:
+
+        if dico[k] ==1:
+            mm +=1
+
+    print(mm)
