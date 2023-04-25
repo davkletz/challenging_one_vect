@@ -10,7 +10,7 @@ def get_freq(path):
     data_file = open(path,"r", encoding="utf-8")
     for tokenlist in parse_incr(data_file):
         for token_avail in tokenlist:
-            #print(token_avail['form'])
+            print(token_avail['form'])
             if token_avail['form'] in dico:
                 dico[token_avail['form']] += 1
             else:
@@ -36,4 +36,4 @@ if __name__ == "__main__":
     file = sys.argv[2]
     dico = get_freq(f"{path}/{corpus}/{file}")
     #print(dico)
-    dump(dico, f"dico_{corpus}_{file[:-7]}.joblib")
+    #dump(dico, f"dico_{corpus}_{file[:-7]}.joblib")
