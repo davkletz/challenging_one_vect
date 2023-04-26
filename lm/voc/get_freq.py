@@ -9,10 +9,10 @@ results = {}
 with open(path + file, "rb") as f:
 
     for line_available in f.readlines():
-        print(line_available)
+        #print(line_available)
 
         content = line_available.split()
-        print(content)
+        #print(content)
 
         if len(content) == 2:
 
@@ -21,6 +21,10 @@ with open(path + file, "rb") as f:
                 word = word[:-1]
             freq = int(content[1])
             results[word] = freq
+
+        else:
+            print("pb")
+            print(content)
 
 
 
