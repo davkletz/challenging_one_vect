@@ -2,7 +2,7 @@
 
 from torch import load, norm
 from joblib import load as ld
-
+from joblib import dump
 def get_vects(path, device):
     """
     Get the vectors from the language model
@@ -37,14 +37,18 @@ x = []
 y = []
 for k in range(embeddings.weight.shape[0]):
     word = words_idx[k]
-    print(word)
-    x.append(norms[k])
-    y.append(words_freq[word])
+    #print(word)
+    y.append(norms[k])
+    x.append(words_freq[word])
 
 print(x)
 print(y)
 
 
+
+dump(x, "freqs.joblibs")
+
+dump(y, "norms.joblibs")
 
 
 
