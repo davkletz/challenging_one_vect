@@ -26,16 +26,16 @@ embeddings = model.encoder.embedding
 words_idx = ld(f"../voc/idx_to_word.joblib")
 words_freq = ld(f"../voc/word_freq.joblib")
 
-norms = norm(embeddings)
+norms = norm(embeddings.weight, dim = 1)
 
 
 
-print(norms.shape())
+print(norms.shape)
 
 
 x = []
 y = []
-for k in range(embeddings.shape()[0]):
+for k in range(embeddings.shape[0]):
     word = words_idx[k]
     x.append(norms[k])
     y.append(words_freq[word])
