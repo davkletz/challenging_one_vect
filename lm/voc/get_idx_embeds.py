@@ -21,7 +21,7 @@ with open(path + file, "rb") as f:
 
             while word[:2] in ["b'"]:
                 word = word[2:]
-            
+
             results[word] = i
 
         else:

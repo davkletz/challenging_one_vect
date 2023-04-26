@@ -19,8 +19,11 @@ def get_vects(path, device):
 
 
 
-
 model = load(p, map_location="cpu")
 
 path = "/data/dkletz/Other_exp/AvecMatthieu/LSTM_ambiguity/language_model"
 file = "model.pt"
+
+
+
+embeddings = model.encoder.embeddings
