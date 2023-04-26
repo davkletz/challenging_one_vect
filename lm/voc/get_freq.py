@@ -19,7 +19,7 @@ with open(path + file, "rb") as f:
             word = str(content[0])
             while word[-1] in [",", "'"]:
                 word = word[:-1]
-                
+
             while word[:2] in ["b'"]:
                 word = word[2:]
             freq = int(content[1])
