@@ -37,6 +37,7 @@ x = []
 y = []
 for k in range(embeddings.weight.shape[0]):
     word = words_idx[k]
+    print(word)
     x.append(norms[k])
     y.append(words_freq[word])
 
