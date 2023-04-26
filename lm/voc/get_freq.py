@@ -17,8 +17,11 @@ with open(path + file, "rb") as f:
         if len(content) == 2:
 
             word = str(content[0])
-            if word[-1] == ',':
+            while word[-1] in [",", "'"]:
                 word = word[:-1]
+                
+            while word[:2] in ["b'"]:
+                word = word[2:]
             freq = int(content[1])
             results[word] = freq
 
