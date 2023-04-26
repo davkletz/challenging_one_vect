@@ -30,7 +30,7 @@ with open(path + file, "rb") as f:
 
         i+=1
 
-dump(results, "word_freq.joblib")
+dump(results, "idx_word.joblib")
 
 
 
