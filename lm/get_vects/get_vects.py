@@ -41,8 +41,8 @@ for k in range(embeddings.weight.shape[0]):
     y.append(norms[k])
     x.append(words_freq[word])
 
-print(x)
-print(y)
+#print(x)
+#print(y)
 
 
 
