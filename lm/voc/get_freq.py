@@ -6,6 +6,7 @@ file = "training_corpus_word_frequencies.txt"
 
 
 results = {}
+
 with open(path + file, "rb") as f:
 
     for line_available in f.readlines():

@@ -4,7 +4,7 @@ path = "/data/dkletz/Other_exp/AvecMatthieu/LSTM_ambiguity/language_model/"
 file = "training_corpus_vocab.txt"
 
 results = {}
-
+idx_to_words = {}
 i = 0
 with open(path + file, "rb") as f:
     for line_available in f.readlines():
@@ -23,6 +23,7 @@ with open(path + file, "rb") as f:
                 word = word[2:]
 
             results[word] = i
+            idx_to_words[i] = word
 
         else:
             print("pb")
@@ -30,7 +31,9 @@ with open(path + file, "rb") as f:
 
         i+=1
 
-dump(results, "idx_word.joblib")
+dump(results, "word_to_idx.joblib")
+
+dump(idx_to_words, "idx_to_word.joblib")
 
 
 
