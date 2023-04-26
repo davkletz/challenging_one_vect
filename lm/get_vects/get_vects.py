@@ -23,8 +23,8 @@ model = load(f"{path}/{file}")
 
 
 embeddings = model.encoder.embedding
-words_idx = ld(f"{path}/../voc/idx_to_word.joblib")
-words_freq = ld(f"{path}/../voc/word_freq.joblib")
+words_idx = ld(f"/../voc/idx_to_word.joblib")
+words_freq = ld(f"/../voc/word_freq.joblib")
 
 norms = norm(embeddings)
 
