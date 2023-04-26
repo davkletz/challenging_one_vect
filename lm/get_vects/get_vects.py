@@ -1,7 +1,7 @@
 
 
-from torch import load
-
+from torch import load, norm
+from joblib import load as ld
 
 def get_vects(path, device):
     """
@@ -16,14 +16,48 @@ def get_vects(path, device):
 
 
 
-
-
-
-
 path = "/data/dkletz/Other_exp/AvecMatthieu/LSTM_ambiguity/language_model"
 file = "model.pt"
 
 model = load(f"{path}/{file}")
 
 
-embeddings = model.encoder.embeddings
+embeddings = model.encoder.embedding
+words_idx = ld(f"{path}/../voc/idx_word.joblib")
+words_freq = ld(f"{path}/../voc/word_freq.joblib")
+
+norms = norm(embeddings)
+
+
+
+print(norms.shape())
+
+
+x = []
+y = []
+for k in range(embeddings.shape()[0]):
+    word = words_idx[k]
+    x.append(norms[k])
+    y.append(words_freq[word])
+
+print(x)
+print(y)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
