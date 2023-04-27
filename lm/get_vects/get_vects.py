@@ -30,7 +30,11 @@ norms = norm(embeddings.weight, dim = 1)
 
 
 
+print(norms[0])
+
+
 print(norms.shape)
+
 
 
 x = []
@@ -46,9 +50,9 @@ print(len(y))
 
 
 
-dump(x, "freqs.joblibs")
+dump(x, "freqs.joblib")
 
-dump(y, "norms.joblibs")
+dump(y, "norms.joblib")
 
 
 
