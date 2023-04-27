@@ -26,11 +26,12 @@ embeddings = model.encoder.embedding
 words_idx = ld(f"../voc/idx_to_word.joblib")
 words_freq = ld(f"../voc/word_freq.joblib")
 
-norms = norm(embeddings.weight, dim = 1)
+norms = norm(embeddings.weight, dim = 1).detach()
+
+norms = norms.detach().cpu().numpy()
 
 
-
-print(norms[0])
+#print(norms[0])
 
 
 print(norms.shape)
