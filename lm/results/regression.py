@@ -7,6 +7,6 @@ y = ld("norms.joblib")
 
 clf = LinearRegression()
 
-clf.fit(x,y)
+clf.fit(x.reshape(-1, 1), y)
 
 print(clf.coef_)
