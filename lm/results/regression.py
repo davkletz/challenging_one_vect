@@ -12,4 +12,5 @@ clf.fit(np.array(x).reshape(-1, 1), np.array(y).reshape(-1, 1))
 
 
 print(clf.coef_)
+print(clf.intercept_)
 
