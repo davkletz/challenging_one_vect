@@ -9,8 +9,12 @@ def centering_cluster(X, n_clusters=1, random_state=0):
 
     kmeans.fit(X)
 
+    centroid = kmeans.cluster_centers_
 
-    return kmeans.cluster_centers_
+    centered_X = X - centroid
+
+
+    return centered_X
 
 
 def get_vects(path, device):
@@ -32,19 +36,20 @@ file = "model.pt"
 model = load(f"{path}/{file}")
 
 
-embeddings = model.encoder.embedding
+embeddings = model.encoder.embedding.detach().cpu().numpy()
 
 
-centroid  = centering_cluster(embeddings, n_clusters=1, random_state=0)
+centered_cluster  = centering_cluster(embeddings, n_clusters=1, random_state=0)
 
 
-norms = norm(centroid, dim = 1).detach()
+norms = norm(centered_cluster, dim = 1)
 
 norms = norms.detach().cpu().numpy()
 
 
 words_idx = ld(f"../voc/idx_to_word.joblib")
 words_freq = ld(f"../voc/word_freq.joblib")
+
 
 
 y = []
