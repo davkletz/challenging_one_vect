@@ -12,6 +12,8 @@ def centering_cluster(X, n_clusters=1, random_state=0):
 
     centroid = kmeans.cluster_centers_
 
+    print(centroid)
+
     centered_X = X - centroid
 
 
@@ -61,5 +63,5 @@ for k in range(len(norms)):
     y.append(norms[k])
 
 
-dump(y, path + "/centroids_norms.joblib")
+dump(y, "/data/dkletz/Other_exp/AvecMatthieu/challenging_one_vect/lm/results/centroids_norms.joblib")
 
