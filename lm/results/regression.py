@@ -3,8 +3,8 @@ from sklearn.linear_model import LinearRegression
 import numpy as np
 
 x = ld("freqs.joblib")
-y = ld("norms.joblib")
-
+#y = ld("norms.joblib")
+y = ld("centroids_norms.joblib")
 
 clf = LinearRegression()
 

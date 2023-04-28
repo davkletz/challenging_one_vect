@@ -61,5 +61,5 @@ for k in range(len(norms)):
     y.append(norms[k])
 
 
-dump(y, path + "centroids_norms.joblib")
+dump(y, path + "/centroids_norms.joblib")
 
