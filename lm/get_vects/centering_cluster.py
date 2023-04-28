@@ -36,7 +36,7 @@ file = "model.pt"
 model = load(f"{path}/{file}")
 
 
-embeddings = model.encoder.embedding.cpu().numpy()
+embeddings = model.encoder.embedding.weight.cpu().numpy()
 
 
 centered_cluster  = centering_cluster(embeddings, n_clusters=1, random_state=0)
