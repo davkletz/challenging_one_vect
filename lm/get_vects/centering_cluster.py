@@ -3,7 +3,7 @@ from joblib import dump
 from torch import load
 from numpy.linalg import norm as norm
 from joblib import load as ld
-
+import numpy as np
 
 def centering_cluster(X, n_clusters=1, random_state=0):
     kmeans = KMeans(n_clusters=n_clusters, random_state=random_state, n_init="auto")
@@ -41,9 +41,10 @@ embeddings = model.encoder.embedding.weight.detach().cpu().numpy()
 
 
 centered_cluster  = centering_cluster(embeddings, n_clusters=1, random_state=0)
+centered_cluster = np.array(centered_cluster)
 
-
-norms = norm(centered_cluster, dim = 1)
+norms = norm(centered_cluster, axis=1)
+print(norms.shape)
 
 #norms = norms.detach().cpu().numpy()
 
