@@ -1,6 +1,7 @@
 from sklearn.cluster import KMeans
 from joblib import dump
-from torch import load, norm
+from torch import load
+from numpy.linalg import norm as norm
 from joblib import load as ld
 
 
