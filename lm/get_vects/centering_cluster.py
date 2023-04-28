@@ -36,7 +36,7 @@ file = "model.pt"
 model = load(f"{path}/{file}")
 
 
-embeddings = model.encoder.embedding.weight.cpu().numpy()
+embeddings = model.encoder.embedding.weight.detach.cpu().numpy()
 
 
 centered_cluster  = centering_cluster(embeddings, n_clusters=1, random_state=0)
@@ -44,7 +44,7 @@ centered_cluster  = centering_cluster(embeddings, n_clusters=1, random_state=0)
 
 norms = norm(centered_cluster, dim = 1)
 
-norms = norms.detach().cpu().numpy()
+#norms = norms.detach().cpu().numpy()
 
 
 words_idx = ld(f"../voc/idx_to_word.joblib")
