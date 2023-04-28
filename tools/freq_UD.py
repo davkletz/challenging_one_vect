@@ -16,6 +16,7 @@ def get_freq(path):
                 z = int(z)
             except:
                 print(z)
+
             if token_avail['form'] in dico:
                 dico[token_avail['form']] += 1
             else:
@@ -51,3 +52,9 @@ if __name__ == "__main__":
             mm +=1
 
     print(mm)
+
+
+    a = list(dico.keys())
+    a.sort()
+
+    print(a[:100])
