@@ -8,7 +8,7 @@ y = ld("norms.joblib")
 
 clf = LinearRegression()
 
-clf.fit(np.array(x).reshape(-1, 1), np.array(y).reshape(-1, 1), sample_weight=np.array(x).reshape(-1, 1))
+clf.fit(np.array(x).reshape(-1, 1), np.array(y).reshape(-1, 1), sample_weight=x)
 
 
 print(clf.coef_)
