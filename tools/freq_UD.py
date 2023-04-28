@@ -11,7 +11,11 @@ def get_freq(path):
     for tokenlist in parse_incr(data_file):
         for token_avail in tokenlist:
 
-            print(token_avail['id'])
+            z = token_avail['id']
+            try:
+                z = int(z)
+            except:
+                print(z)
             if token_avail['form'] in dico:
                 dico[token_avail['form']] += 1
             else:
