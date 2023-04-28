@@ -57,4 +57,4 @@ if __name__ == "__main__":
     a = list(dico.keys())
     a.sort()
 
-    print(a[:100])
+    print(a[5000:5025])
