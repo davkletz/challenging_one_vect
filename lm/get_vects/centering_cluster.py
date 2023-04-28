@@ -12,6 +12,7 @@ def centering_cluster(X, n_clusters=1, random_state=0):
 
     centroid = kmeans.cluster_centers_
 
+    print("DA")
     print(centroid)
 
     centered_X = X - centroid
