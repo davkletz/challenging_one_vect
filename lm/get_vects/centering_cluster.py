@@ -55,7 +55,7 @@ words_freq = ld(f"../voc/word_freq.joblib")
 
 
 y = []
-for k in range(embeddings.weight.shape[0]):
+for k in range(len(norms)):
     word = words_idx[k]
     #print(word)
     y.append(norms[k])
