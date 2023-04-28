@@ -15,7 +15,8 @@ def get_freq(path):
             try:
                 z = int(z)
             except:
-                print(z)
+                #print(z)
+                continue
 
             if token_avail['form'] in dico:
                 dico[token_avail['form']] += 1
