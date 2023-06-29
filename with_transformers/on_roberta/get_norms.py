@@ -3,7 +3,7 @@
 
 import torch
 from joblib import dump
-a = torch.load("embeddings990000")
+a = torch.load("/data/mnedeljkovic/thesis/thesis/code/embeddings/embeddings990000")
 
 
 b = list(a.keys())
