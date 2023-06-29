@@ -19,7 +19,7 @@ for element in b:
     tot = sum(tens)
     results_norms.append(torch.norm(tens)/len(tens))
     results_freq.append(len(tens))
-    results[b] = [torch.norm(tens)/len(tens), len(tens)]
+    results[element] = [torch.norm(tens)/len(tens), len(tens)]
 
 
 dump(results, "results_990000")
