@@ -14,7 +14,7 @@ results_norms = []
 results_freq = []
 for element in b:
     current_list = a[element]
-    tens = a[b][1]
+    tens = a[element][1]
 
     tot = sum(tens)
     results_norms.append(torch.norm(tens)/len(tens))
