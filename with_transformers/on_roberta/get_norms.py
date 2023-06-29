@@ -9,7 +9,7 @@ a = torch.load("/data/mnedeljkovic/thesis/thesis/code/embeddings/embeddings99000
 b = list(a.keys())
 
 
-
+results = {}
 results_norms = []
 results_freq = []
 for element in b:
@@ -18,10 +18,10 @@ for element in b:
     tot = sum(tens)
     results_norms.append(torch.norm(tens)/len(tens))
     results_freq.append(len(tens))
+    results[b] = [torch.norm(tens)/len(tens), len(tens)]
 
 
-dump(results_norms, "results_norms990000")
-dump(results_freq, "results_freq990000")
+dump(results, "results_990000")
 
 
 
