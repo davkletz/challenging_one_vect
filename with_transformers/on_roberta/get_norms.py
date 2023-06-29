@@ -18,11 +18,17 @@ for element in b:
     if i%100 == 0:
         print(i)
     current_list = a[element]
+
     tens = a[element][1]
-    tot = sum(tens)
-    results_norms.append(torch.norm(tot)/len(tens))
-    results_freq.append(len(tens))
-    results[element] = [torch.norm(tot)/len(tens), len(tens)]
+    if len(tens) == 0:
+        results[element] = [0, 0]
+
+    else:
+        tot = sum(tens)
+
+        results_norms.append(torch.norm(tot)/len(tens))
+        results_freq.append(len(tens))
+        results[element] = [torch.norm(tot)/len(tens), len(tens)]
 
 
 dump(results, "results_990000")
