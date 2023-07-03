@@ -2,7 +2,7 @@ from joblib import dump
 from nltk.tokenize.treebank import TreebankWordDetokenizer
 from nltk.tokenize import sent_tokenize
 from random import random
-from transformers import BertTokenizer
+from transformers import BertTokenizer, RobertaTokenizer
 from joblib import dump
 
 detokenizer = TreebankWordDetokenizer()
@@ -147,7 +147,8 @@ def match_sentences_POS(all_tokens, detail_sentences, POS):
 
 if __name__ == '__main__':
 
-    tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+    #tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+    tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
 
 
 
@@ -181,7 +182,7 @@ if __name__ == '__main__':
 
     print(nb_sents)
     print(nb_files)
-    dump(detail_toks, f"detail_toks.joblib")
+    dump(detail_toks, f"Rob_detail_toks.joblib")
 
 
 
